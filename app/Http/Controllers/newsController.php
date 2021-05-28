@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\notifyEmail;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class newsController extends Controller
 {
@@ -11,6 +14,13 @@ class newsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function sendEmail()
+    {
+        $data=['title'=>'php','subject'=>'ssssssssssss'];
+        $user=User::findOrFail(6);
+        Mail::to('mohmohzobeidah@gmail.com')->send(new notifyEmail($data));
+    }
     public function index()
     {
 

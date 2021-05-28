@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\newsController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +26,14 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('news', 'App\Http\Controllers\newsController')->middleware(['auth','verified']);
+
+Route::get('/redirect/{service}', [SocialController::class, 'redirect']);
+
+Route::get('/callback/{service}', [SocialController::class, 'callback']);
+
+
+Route::get('/sendEmail',[newsController::class, 'sendEmail']);
+
+Route::get('/offer/getD',[\App\Http\Controllers\OfferController::class,'getoffers']);
+Route::get('/offer/create',[\App\Http\Controllers\OfferController::class,'create']);
+Route::post('/offer/store',[\App\Http\Controllers\OfferController::class,'store'])->name('offer.store');

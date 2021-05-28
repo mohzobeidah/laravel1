@@ -57,6 +57,9 @@
                 <x-button class="ml-4">
                     {{ __('Register') }}
                 </x-button>
+                <x-link  class="ml-4" href="{{url('/redirect/facebook')}}">
+                    {{ __('Login with facebook') }}
+                </x-link>
             </div>
         </form>
     </x-auth-card>
